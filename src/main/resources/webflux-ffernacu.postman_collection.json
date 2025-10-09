@@ -1,0 +1,637 @@
+{
+	"info": {
+		"_postman_id": "450c075d-7c49-45f4-86af-438b906bcf25",
+		"name": "webflux-ffernacu",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12519706"
+	},
+	"item": [
+		{
+			"name": "reactor-academy",
+			"item": [
+				{
+					"name": "login",
+					"item": [
+						{
+							"name": "login",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"        var jsonData = pm.response.json();\r",
+											"        pm.environment.set(\"access_token\", jsonData.access_token); // Or pm.collectionVariables.set"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"ffernacu\",\r\n    \"password\": \"123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"login"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {},
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {},
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "estudiante",
+					"item": [
+						{
+							"name": "save",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{login_academy_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nombres\": \"Genaro\",\r\n    \"apellidos\": \"Fernandez\",\r\n    \"dni\": \"34567899\",\r\n    \"edad\": 19\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/v1/students",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"v1",
+										"students"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{login_academy_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nombres\": \"Genaro\",\r\n    \"apellidos\": \"Fernandez\",\r\n    \"dni\": \"34567819\",\r\n    \"edad\": 20\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/v1/students/68e717975e2b60493770d732",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"v1",
+										"students",
+										"68e717975e2b60493770d732"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "findAll",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{login_academy_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/v1/students",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"v1",
+										"students"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "findById",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{login_academy_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/v1/students/68e4c6032be6f53cce93af4c",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"v1",
+										"students",
+										"68e4c6032be6f53cce93af4c"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteById",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{login_academy_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/v1/students/68e4c6302be6f53cce93af4d",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"v1",
+										"students",
+										"68e4c6302be6f53cce93af4d"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "orderByAge",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{login_academy_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/v1/students/orderByAge?isAscending=true",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"v1",
+										"students",
+										"orderByAge"
+									],
+									"query": [
+										{
+											"key": "isAscending",
+											"value": "true",
+											"description": "TRUE -> ORDEN ASCENDENTES\nFALSE ->  ORDEN DESCENDENTE"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "curso",
+					"item": [
+						{
+							"name": "save",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{login_academy_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nombre\": \"Base de datos\",\r\n    \"siglas\": \"db\",\r\n    \"estado\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/v1/courses",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"v1",
+										"courses"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{login_academy_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nombre\": \"Logaritmos\",\r\n    \"siglas\": \"log\",\r\n    \"estado\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/v1/courses/68e54cb2579c57fc6a0c33cf",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"v1",
+										"courses",
+										"68e54cb2579c57fc6a0c33cf"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "findAll",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{login_academy_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/v1/courses",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"v1",
+										"courses"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "findById",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{login_academy_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/v1/courses/68e54cb2579c57fc6a0c33cf",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"v1",
+										"courses",
+										"68e54cb2579c57fc6a0c33cf"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteById",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{login_academy_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/v1/courses/68e54c4a579c57fc6a0c33cd",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"v1",
+										"courses",
+										"68e54c4a579c57fc6a0c33cd"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "matricula",
+					"item": [
+						{
+							"name": "save",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{login_academy_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"fechaMatricula\": \"2025-10-08T15:05:00\",\r\n    \"estudiante\": {\r\n        \"id\": \"68e60842a8be8dc553f20c5e\"\r\n    },\r\n    \"cursos\": [\r\n        {\r\n            \"id\": \"68e54c7c579c57fc6a0c33ce\"\r\n        },\r\n        {\r\n            \"id\": \"68e55de419d6ea85ade70812\"\r\n        }\r\n\r\n    ],\r\n    \"estado\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/v1/registrations",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"v1",
+										"registrations"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "report",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{login_academy_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/v1/registrations",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"v1",
+										"registrations"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "ok",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:8080/v1/registrations",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"v1",
+												"registrations"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "transfer-encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, no-store, max-age=0, must-revalidate"
+										},
+										{
+											"key": "Pragma",
+											"value": "no-cache"
+										},
+										{
+											"key": "Expires",
+											"value": "0"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "0"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "no-referrer"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"id\": \"68e573471be535a189e383f6\",\n        \"fechaMatricula\": \"2025-10-07T15:05:00\"\n    },\n    {\n        \"id\": \"68e573dc45eb0b101606096b\",\n        \"fechaMatricula\": \"2025-10-07T15:05:00\",\n        \"estudiante\": {\n            \"id\": \"68e4c6032be6f53cce93af4c\",\n            \"nombres\": \"Salvador\",\n            \"apellidos\": \"Chavez\",\n            \"dni\": \"34567897\",\n            \"edad\": 18\n        },\n        \"cursos\": [\n            {\n                \"id\": \"68e54c7c579c57fc6a0c33ce\",\n                \"nombre\": \"Algebra\",\n                \"siglas\": \"alg\",\n                \"estado\": true\n            }\n        ],\n        \"estado\": true\n    },\n    {\n        \"id\": \"68e6049aa8be8dc553f20c5d\",\n        \"fechaMatricula\": \"2025-10-07T15:05:00\",\n        \"estudiante\": {\n            \"id\": \"68e4c6032be6f53cce93af4c\",\n            \"nombres\": \"Salvador\",\n            \"apellidos\": \"Chavez\",\n            \"dni\": \"34567897\",\n            \"edad\": 18\n        },\n        \"cursos\": [\n            {\n                \"id\": \"68e54c7c579c57fc6a0c33ce\",\n                \"nombre\": \"Algebra\",\n                \"siglas\": \"alg\",\n                \"estado\": true\n            },\n            {\n                \"id\": \"68e54cb2579c57fc6a0c33cf\",\n                \"nombre\": \"Logaritmos\",\n                \"siglas\": \"log\",\n                \"estado\": true\n            }\n        ],\n        \"estado\": true\n    },\n    {\n        \"id\": \"68e573471be535a189e383f5\",\n        \"fechaMatricula\": \"2025-10-07T15:05:00\",\n        \"estudiante\": {\n            \"id\": \"68e4c6032be6f53cce93af4c\",\n            \"nombres\": \"Salvador\",\n            \"apellidos\": \"Chavez\",\n            \"dni\": \"34567897\",\n            \"edad\": 18\n        },\n        \"cursos\": [\n            {\n                \"id\": \"68e54c7c579c57fc6a0c33ce\",\n                \"nombre\": \"Algebra\",\n                \"siglas\": \"alg\",\n                \"estado\": true\n            }\n        ],\n        \"estado\": true\n    },\n    {\n        \"id\": \"68e574a3c489494a5369519c\",\n        \"fechaMatricula\": \"2025-10-07T15:05:00\",\n        \"estudiante\": {\n            \"id\": \"68e4c6032be6f53cce93af4c\",\n            \"nombres\": \"Salvador\",\n            \"apellidos\": \"Chavez\",\n            \"dni\": \"34567897\",\n            \"edad\": 18\n        },\n        \"cursos\": [\n            {\n                \"id\": \"68e54c7c579c57fc6a0c33ce\",\n                \"nombre\": \"Algebra\",\n                \"siglas\": \"alg\",\n                \"estado\": true\n            }\n        ],\n        \"estado\": true\n    },\n    {\n        \"id\": \"68e574fbc489494a5369519d\",\n        \"fechaMatricula\": \"2025-10-07T15:05:00\",\n        \"estudiante\": {\n            \"id\": \"68e4c6032be6f53cce93af4c\",\n            \"nombres\": \"Salvador\",\n            \"apellidos\": \"Chavez\",\n            \"dni\": \"34567897\",\n            \"edad\": 18\n        },\n        \"cursos\": [\n            {\n                \"id\": \"68e54c7c579c57fc6a0c33ce\",\n                \"nombre\": \"Algebra\",\n                \"siglas\": \"alg\",\n                \"estado\": true\n            },\n            {\n                \"id\": \"68e54cb2579c57fc6a0c33cf\",\n                \"nombre\": \"Logaritmos\",\n                \"siglas\": \"log\",\n                \"estado\": true\n            }\n        ],\n        \"estado\": true\n    },\n    {\n        \"id\": \"68e572ac9a34feaf69a946bd\",\n        \"fechaMatricula\": \"2025-10-07T15:05:00\",\n        \"estudiante\": {\n            \"id\": \"68e4c6032be6f53cce93af4c\",\n            \"nombres\": \"Salvador\",\n            \"apellidos\": \"Chavez\",\n            \"dni\": \"34567897\",\n            \"edad\": 18\n        },\n        \"cursos\": [\n            {\n                \"id\": \"68e54c7c579c57fc6a0c33ce\",\n                \"nombre\": \"Algebra\",\n                \"siglas\": \"alg\",\n                \"estado\": true\n            }\n        ],\n        \"estado\": true\n    },\n    {\n        \"id\": \"68e6e64108b7c61da3a429eb\",\n        \"fechaMatricula\": \"2025-10-08T15:05:00\",\n        \"estudiante\": {\n            \"id\": \"68e60842a8be8dc553f20c5e\",\n            \"nombres\": \"Lenin\",\n            \"apellidos\": \"Fernandez\",\n            \"dni\": \"34567898\",\n            \"edad\": 19\n        },\n        \"cursos\": [\n            {\n                \"id\": \"68e54c7c579c57fc6a0c33ce\",\n                \"nombre\": \"Algebra\",\n                \"siglas\": \"alg\",\n                \"estado\": true\n            },\n            {\n                \"id\": \"68e55de419d6ea85ade70812\",\n                \"nombre\": \"Base de datos\",\n                \"siglas\": \"db\",\n                \"estado\": true\n            }\n        ],\n        \"estado\": true\n    },\n    {\n        \"id\": \"68e6b074fe2899d13bcb9eaf\",\n        \"fechaMatricula\": \"2025-10-08T15:05:00\",\n        \"estudiante\": {\n            \"id\": \"68e60842a8be8dc553f20c5e\",\n            \"nombres\": \"Lenin\",\n            \"apellidos\": \"Fernandez\",\n            \"dni\": \"34567898\",\n            \"edad\": 19\n        },\n        \"cursos\": [\n            {\n                \"id\": \"68e54c7c579c57fc6a0c33ce\",\n                \"nombre\": \"Algebra\",\n                \"siglas\": \"alg\",\n                \"estado\": true\n            },\n            {\n                \"id\": \"68e55de419d6ea85ade70812\",\n                \"nombre\": \"Base de datos\",\n                \"siglas\": \"db\",\n                \"estado\": true\n            }\n        ],\n        \"estado\": true\n    }\n]"
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

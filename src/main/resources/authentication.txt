@@ -1,0 +1,55 @@
+----------------------------------------------
+1 .SCRIPT FOR DATABASE
+----------------------------------------------
+{
+  "_id" : ObjectId("7900a492df9f93636506a301"),
+  "name" : "ADMIN"
+}
+
+{
+  "_id" : ObjectId("0c7e0c96948001f396886b37"),
+  "name" : "USER"
+}
+
+{
+  "_id" : ObjectId(
+  "073c942491c1a2b3f548b8a0"),
+  "username" : "ffernacu",
+  "password" : "$2a$12$zK.XzFD9LzW2lSrh67LPpehQlTR6.Sm7H87ZYXSnJA2FytwDG1uWS",
+  "status" : true,
+  "roles" : [
+    {
+      "_id" : ObjectId("7900a492df9f93636506a301")
+    }
+  ]
+}
+
+{
+  "_id" : ObjectId("42d7e418a05535e068190353"),
+  "username" : "code",
+  "password" : "$2a$12$mr6GUFQx/39.D/2dPDJlFuZxmDCZ/.Pqa.6nnZu8ipiq/yBiQm6UO",
+  "status" : true,
+  "roles" : [
+    {
+      "_id" : ObjectId("0c7e0c96948001f396886b37")
+    }
+  ]
+}
+
+-------------------------------
+2. API FOR LOGIN
+-------------------------------------
+
+curl --location 'http://localhost:8080/login' \
+--header 'Content-Type: application/json' \
+--data '{
+    "username": "ffernacu",
+    "password": "123"
+}'
+
+curl --location 'http://localhost:8080/login' \
+--header 'Content-Type: application/json' \
+--data '{
+    "username": "code",
+    "password": "456"
+}'
